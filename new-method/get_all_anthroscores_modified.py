@@ -1,8 +1,44 @@
+# SPDX-License-Identifier: BSD 2-Clause
+
+# Copyright (c) Myra Cheng 2023, AnthroScore
+# Copyright (c) 2026, Siiri Käpyaho (modifications)
+# All rights reserved.
+
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+
+# * Redistributions of source code must retain the above copyright notice, this
+#   list of conditions and the following disclaimer.
+
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# ----------------------------------------
+
+# This file includes a modified version of AnthroScore (https://github.com/myracheng/anthroscore).
+
+# Changes include making the mechanism more robust by decreasing repetition and
+# saving the progress incrementally at every 1000th item. This version only
+# calculates scores for pre-masked sentences instead of sentence masking being
+# a part of the process.
+
+# Checkpoint logic is not part of the original implementation.
+
 """
-This is a modified version from the original AnthroScore
-(https://github.com/myracheng/anthroscore)
-with added robustness: the results are saved every 1000th item, so the loss of
-progress is not as massive in a case of an error.
+Scores masked sentences according to how likely the masked phrase is to be replaced
+either with human pronouns or non-human pronouns.
 """
 
 import logging

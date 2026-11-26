@@ -73,7 +73,7 @@ Static data used for the method: target entities and prototype vector descriptio
 The final method that was used to describe the collected data. Also includes a more robust version of AnthroScore.
 
 * `calculate_scores.py`: **The final method**. Loads the needed models from HuggingFace and calculates scores for sentences including a `[MASK]` token. As an addition from the experiments, the final method includes a mask centering function that ensures that the masked token is not cropped out from texts longer than the allowed context window.
-* `get_all_anthroscores_modified.py`: A modified version of AnthroScore that saves the progress incrementally and recovers from specific errors. This version was used to calculate AnthroScores for the collected data, but the scores were not utilized in the final work after more problems surfaced from the original method.
+* `get_all_anthroscores_modified.py`: A modified version of AnthroScore that saves the progress incrementally and recovers from specific errors. This version was used to calculate AnthroScores for the collected data, but the scores were not utilized in the final work after more problems surfaced from the original method. **See the file header for the original license.**
 
 
 ### Post-processing
@@ -113,3 +113,7 @@ Helper programs for writing data from one format to another.
 * [Atypical Animacy (Coll Ardanuy et al., 2020)](https://aclanthology.org/2020.coling-main.400.pdf) ([GitHub](https://github.com/Living-with-machines/AtypicalAnimacy))
 * [AnthroSet (Lonke et al., 2025)](https://aclanthology.org/2025.ommm-1.3.pdf) ([GitHub](https://github.com/doriellel/anthroset))
 * [Anthropomorphism Corpus (Shardlow et al., 2025)](https://aclanthology.org/2025.findings-acl.926.pdf) ([GitHub](https://github.com/mattshardlow/Anthropomorphism_Corpus))
+
+## License
+
+See [LICENSE](LICENSE.txt). Note also that the file `get_all_anthroscores_modified.py` has its own license notice, available in the file header.
